@@ -7,6 +7,9 @@
 
 import SwiftUI
 
+
+
+
 struct ContentView: View {
     @State private var valor1: String = ""
     @State private var valor2: String = ""
@@ -22,13 +25,14 @@ struct ContentView: View {
                   
                     Form{
                         HStack{
+                            Image("colFlag").resizable().frame(width: 35, height: 20)
                             VStack(spacing:5){
                                 Image(systemName: "dollarsign").resizable().frame(width: 20, height: 35).fontWeight(.bold)
                                 Text("COP").font(.caption).opacity(0.5)
                             }
                             
                             TextField("", text: $valor1 ) .multilineTextAlignment(.trailing)
-                                .keyboardType(.numberPad)
+//                                .keyboardType(.decimalPad)
                                 .onSubmit {
                                     print(valor1)
                                     Task {
@@ -50,15 +54,19 @@ struct ContentView: View {
                 
                                     
                                 }
+                                
                         }
+
+                        
                         HStack{
+                            Image("ueFlag").resizable().frame(width: 35, height: 20)
                             VStack(spacing:5){
                                 Image(systemName: "eurosign").resizable().frame(width: 20, height: 25).fontWeight(.bold)
                                 Text("EUR").font(.caption).opacity(0.5)
                             }
                             
                             TextField("", text: $valor2 ) .multilineTextAlignment(.trailing)
-                                .keyboardType(.numberPad)
+//                                .keyboardType(.decimalPad)
                                 .onSubmit {
                                     print(valor2)
                                     Task {
@@ -85,13 +93,14 @@ struct ContentView: View {
                             
                         }
                         HStack{
+                            Image("usFlag").resizable().frame(width: 35, height: 70)
                             VStack(spacing:5){
                                 Image(systemName: "dollarsign").resizable().frame(width: 20, height: 35).fontWeight(.bold)
-                                Text("USD").font(.caption).opacity(0.5)
+                                Text("USD").font(.caption) .opacity(0.5)
                             }
                             
                             TextField("", text: $valor3 ) .multilineTextAlignment(.trailing)
-                                .keyboardType(.numberPad)
+//                                .keyboardType(.decimalPad)
                                 .onSubmit {
                                     print(valor3)
                                     Task {
@@ -120,16 +129,37 @@ struct ContentView: View {
                         
                         
                         
-                    }.navigationTitle("Conversor")
+                    }.navigationTitle("")
+                        .toolbar{
+                            ToolbarItem(placement: .principal) {
+                                Text("Tu conversor")
+                                    .padding()
+                                    .background(Color.azulClaro)
+                                    .foregroundColor(Color.texto)
+                                    .font(.title)
+                                    .fontWeight(.bold)
+                                    .cornerRadius(20)
+                                    
+                                
+                            }
+                            
+                        }
                         .scrollContentBackground(.hidden)
+                    
                    
-                }
+                }.background(Color.azulClaro.opacity(0.9))
+                    .frame(height: 310)
+                    .cornerRadius(20)
+                
                 .padding()
             }
         }
         
     }
 }
+
+
+
 
 #Preview {
     ContentView()
